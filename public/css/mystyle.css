@@ -73,6 +73,7 @@ body {
   height: 400px;
   width: 300px;
 }
+
 .card::before {
   content: "";
   position: absolute;
@@ -104,6 +105,7 @@ body {
 .card .info {
   position: relative;
   z-index: 3;
+  font-size: 24px;
   background-color: black;
   color: #fff;
   opacity: 0;

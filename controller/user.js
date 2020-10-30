@@ -6,35 +6,41 @@ exports.pen=(req,res,next)=>{
     find.exec((err,data)=>{
         if(err)
         throw err;
-        res.render("pen",{store:data})
+        res.render("pen",{ title:"Pen",store:data})
     })
 
 };
 exports.paper=(req,res,next)=>{
-    const find = storeModel.find({name:{$in:["Paper","paper"]}});
+    const find = storeModel.find({name:{$in:["Pin","pin"]}});
     find.exec((err,data)=>{
         if(err)
         throw err;
-        res.render("paper",{store:data})
+        res.render("paper",{title:"PaperPins",store:data})
     })
 
 };
-exports.pin=(req,res,next)=>{
-    const find = storeModel.find({name:{$in:["Pin","Pen"]}});
+exports.greeting=(req,res,next)=>{
+    const find = storeModel.find({name:{$in:["Greeting","greeting"]}});
     find.exec((err,data)=>{
         if(err)
         throw err;
-        res.render("pin",{store:data})
+        res.render("greeting",{title:"Greetings",store:data})
     })
 
 };
 exports.books=(req,res,next)=>{
-    const find = storeModel.find({name:{$in:["books","book"]}});
+    const find = storeModel.find({name:{$in:["Book","book"]}});
     find.exec((err,data)=>{
         if(err)
         throw err;
-        res.render("Books",{store:data})
+        res.render("Books",{title:"Books",store:data})
     })
 
 };
+exports.details=(req,res,next)=>{
+    const id = req.params.storeid;
+    storeModel.findById(id).then((result)=>{
+        res.render("details",{ title:"Product Details",store:result})
+    })
+}
 

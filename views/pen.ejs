@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include("./header") %>
+    <title><%= title %></title>
     <link rel="stylesheet" href="/css/style.css" />
 <body>
     
@@ -9,16 +10,16 @@
     <% if(store.length>0){ %>
         <div>
       <% for(stationary of store ){ %>
-        <div class="card-user" >
+        <a href="/details/<%= stationary._id %>"> <div class="card-user" >
           
       <img src="../uploads/<%= stationary.image %>" alt="profileimage">
           <div class="container-user" >
        <% const des = stationary.price + 50  %>     
-      <h4><b><%= stationary.title %></b></h4>
+      <h5><b><%= stationary.title %></b></h5>
       <i>Price:<%= stationary.price %> <del style="color: red;"><%= des %></del><i>
   </div>
     
-  </div>
+  </div></a>
       <% } %>
         </div>
       <% } else { %>
