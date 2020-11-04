@@ -15,7 +15,7 @@ app.use("/books",user.books);
 
 app.get("/details/:storeid",user.details);
 app.get("/",(req,res,next)=>{
-    res.render("home",{title: "Welcome to the Stationary Store"});
+    res.render("home",{title: "Welcome to the Stationary Store", user:''});
     
 });
 app.post("/signin",user.signin);
@@ -24,6 +24,9 @@ app.post("/signup",[check("uname","Only Alphabets Allowed").isAlpha(),check("pas
 ,check("cpass").custom((value, {req})=>{
  if(value!= req.body.pass){
      throw new Error("Password Confirmation does not match Password");
+ }
+ else{
+     return true;
  }
 })],(req,res,next)=>{
     const errors = validationResult(req);
@@ -34,12 +37,12 @@ app.post("/signup",[check("uname","Only Alphabets Allowed").isAlpha(),check("pas
     const cpass = req.body.cpass;
  loginModel.insertMany({uname:uname,pass:pass}).then((result)=>{
      console.log("successfully inserted");
-          res.render("login",{title:"login/signup", error:'', success :"Signup Successfully"});
+          res.render("login",{title:"login/signup", error:'', success :"Signup Successfully", user:''});
 
  });
 }
 else{
-    res.render("login",{title:"Incorrect Details", error: errors.mapped(), success :"Signup UnSuccessfull"})
+    res.render("login",{title:"Incorrect Details", error: errors.mapped(), success :"Signup UnSuccessfull",user:''})
 }
 }
 );
