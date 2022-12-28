@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(express.static(path.join("public")));
-mongoose.connect("mongodb://localhost:27017/Stationary",{useNewUrlParser:true, useUnifiedTopology:true,}).then(result => {
+mongoose.connect('mongodb+srv://Sonal:Sonal123@cluster0.qdjhkgk.mongodb.net/Stationary?retryWrites=true&w=majority',{useNewUrlParser:true, useUnifiedTopology:true,}).then(result => {
 console.log("database connected successfully");
 }).catch((err) => {
   console.log("failed",err);
