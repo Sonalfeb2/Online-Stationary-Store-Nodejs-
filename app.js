@@ -13,7 +13,8 @@ console.log("database connected successfully");
 }).catch((err) => {
   console.log("failed",err);
 })
+var port = process.env.PORT || 8080;
 app.set("view engine","ejs")
 app.use(router);
 app.use(admin);
-app.listen(8080);
+app.listen(port);
